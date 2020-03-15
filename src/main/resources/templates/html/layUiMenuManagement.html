@@ -1,0 +1,69 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/layui-2.4.5/css/layui.css">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="/static/css/commonStyle.css">
+    <script src="/static/jqery/jquery.min.js"></script>
+</head>
+<body>
+<!--<div >-->
+<!--&lt;!&ndash;#*fa-spin 旋转*#&ndash;&gt;-->
+<!--<button class="layui-btn layui-btn-normal"><i class="fa fa-plus"></i> &nbsp;新增</button>-->
+<!--<button id="userListSearch" lay-submit="" lay-filter="demo2"-->
+<!--class="layui-btn layui-btn-normal" ><i class="fa fa-cog fa-spin"></i> &nbsp;查询</button>-->
+<!--<button id="userListSave" class="layui-btn layui-btn-normal"><i class="fa fa-remove"></i> &nbsp;保存</button>-->
+<!--<button id="userListDel" class="layui-btn layui-btn-normal"><i class="fa fa-remove"></i> &nbsp;删除</button>-->
+<!--<button id="easyuiUserListExport" class="layui-btn layui-btn-normal"><i class="fa fa-hand-o-right"></i> &nbsp;按条件导出</button>-->
+<!--<button class="layui-btn layui-btn-normal"><i class="fa fa-hand-o-right"></i> &nbsp;全部导出</button>-->
+<!--<button class="layui-btn layui-btn-normal" id="zzz"><i class="fa fa-clipboard"></i> &nbsp;打印预览</button>-->
+<!--<button class="layui-btn layui-btn-normal" id="layuilook"><i class="fa fa-clipboard"></i> &nbsp;查看行元素</button>-->
+<!--<button class="layui-btn layui-btn-normal" id="download"><i class="fa fa-clipboard"></i> &nbsp;下载FTP文件</button>-->
+<!--</div>-->
+<form class="layui-form" action="" style="border: 2px; background: #1b6d85">
+
+        <div class="layui-form-item">
+            <!--layui-input-inline    短  -->
+            <div class="layui-input-inline" >
+                <select name="addMenu"   lay-filter="selectOne" lay-verify="required" >
+                    <option value="">请选择你要添加菜单级别</option>
+                    <option value="001">一级菜单</option>
+                    <option value="002">二级菜单</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="layui-form-item" id="level" style="display: none">
+            <!--layui-input-inline    短  -->
+            <div class="layui-input-inline" >
+                <select name="addMenu"   lay-filter="selectOne" lay-verify="required" id="firstMenu">
+                    <option value="">请选择二级菜单添加到哪个下面</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="layui-form-item" id="menuName"  style="display: none">
+            <!--layui-input-inline    短  -->
+            <div class="layui-input-inline" >
+                <div class="layui-input-inline">
+                    <input type="password" name="password"
+                           required lay-verify="required"
+                           placeholder="请输入菜单名称"
+                           autocomplete="off" class="layui-input">
+                </div>
+            </div>
+        </div>
+
+    <button id="saveMenu" class="layui-btn layui-btn-normal"><i class="fa fa-remove"></i> &nbsp;保存</button>
+
+</form>
+
+
+<script src="/static/layui-2.4.5/layui.js"></script>
+<script src="/static/js/layuiDemo/indexLayui.js"></script>
+<script src="/static/js/layuiDemo/layuiMenuManagement.js"></script>
+<script src="/static/js/common/cldCommon.js"></script>
+</body>
+</html>
