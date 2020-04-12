@@ -13,6 +13,7 @@ public class MessageResult {
     public MessageResult() {
         //默认处理成功
         result = true;
+        message = "操作成功！";
     }
 
     public MessageResult(Boolean result, String message, String remarks , T data) {

@@ -46,7 +46,7 @@ $(function () {
 
 
     //JavaScript代码区域
-    layui.use(['element','form','laydate','table','layer','code'], function(){
+    layui.use(['element','form','laydate','table','layer','code','jquery'], function(){
         //模块初始化
          element = layui.element;
          form = layui.form;
@@ -54,6 +54,9 @@ $(function () {
         table = layui.table;
         layer = layui.layer;
         code = layui.code;
+
+        var $ = layui.$;
+
         layui.code({
             title: 'NotePad++的风格'
             ,skin: 'notepad' //如果要默认风格，不用设定该key。
@@ -63,7 +66,48 @@ $(function () {
             $("#formdiv").slideToggle();
         })
 
+        //视频查询按钮
+        $("#vodeoListSearch").click(function () {
+            var jsonDate = $("#videoQueryForm").serializeObject(); //输出数组
+            //查询面板收起
+            $("#formdiv").slideUp();
 
+            //table初始化
+            table.render({
+                elem: '#tableVideo',               //tableid
+                url:'video/layuiVideoQuery',
+                where:jsonDate,                   //条件
+                skin: 'line', //行边框风格
+                even: true ,//开启隔行背景
+                size: 'sm', //小尺寸的表格
+                cols: [[ //标题栏
+                    {type: 'checkbox', fixed: 'left'},
+                    {field: 'videoName', title: '视频名字', width: 800,edit: 'text'},
+                    //videoFullPathName
+                    {field: 'videoFullPathName', title: '视频名字', width: 800,edit: 'text'},
+                    //        $("#playVido").click(function () {
+                    //
+                    //             var loadstr = '<video width="100%" height="100%" ' +
+                    //                 ' controls="controls" ' +
+                    //                 'autobuffer="autobuffer" ' +
+                    //                 ' autoplay="autoplay" loop="loop">' +
+                    //                 '<source src="/static/videos/sample1.mp4" type="video/mp4"></source>' +
+                    //                 '</video>'
+                    //             layer.open({
+                    //                 type: 1,
+                    //                 title: '播放视频',
+                    //                 content: loadstr,
+                    //             });
+                    //         })
+                    {fixed: 'right', title:'点击播放', toolbar: '#playBtn', width:250}
+                ]],
+                // data: tableDate,
+                page:true
+                // limit:5
+            });
+
+        })
+        
         //查询按钮
         $("#userListSearch").click(function () {
             var jsonDate = $("#baseQueryForm").serializeObject(); //输出数组
@@ -191,37 +235,44 @@ $(function () {
         element.on('nav(test)', function(elem){
 
 
+
             // console.log(elem); //得到当前点击的DOM对象
-            // console.log(elem[0]);
+            console.log(elem[0]);
             var q = $(elem[0]);
-            element.tabChange('demo', q.text());
+            console.log(q );
+
+            // element.tabChange('demo', q.text());
 
             //获取子标签id和url
             var id = q.attr("id");
             var src = q.attr("name");
 
+            var exist=$("li[lay-id='"+id+"']").length; //判断是否存在tab
             //动态添加url
            var ss = "http://localhost:8081/"+src;
 
 
             var ppp = "<iframe src="+ss+ " frameborder='0' scrolling='false' style='width:1450px;height: 600px;'></iframe>";
 
-
-            //<iframe src='https:www.baidu.com' frameborder='0' scrolling='false' style='width: 1100px;height: 600px;'></iframe>
-            // element.tabChange('demo', q.text());
             //判断是否有子标签，有子标签则不会新增tab
-            if (q.html().indexOf("layui-nav-more")>-1) {
+            if (q.html().indexOf("layui-nav-more")>-1) {   //有子标签
                 return
-            }else{
-                element.tabAdd('demo', {
-                    title: q.text(),
-                    content:ppp, //支持传入html
-                    id: id
-                });
+            }else{  //没有子标签
 
 
-                //切换当前tab
-                element.tabChange('demo', id);
+                if(exist==0){  //tab 没有打开过
+                    element.tabAdd('demo', {
+                        title: q.text(),
+                        content:ppp, //支持传入html
+                        id: id
+                    });
+                    //切换当前tab
+                    element.tabChange('demo', id);
+                }else { // tab已经打开
+                    element.tabChange('demo', id);
+                }
+
+
             }
         });
 
@@ -242,6 +293,35 @@ $(function () {
                     });
                     layer.close(index);
                 })
+            }
+
+        })
+
+        table.on('tool(tableVideo)',function (obj) {
+            //obj.event     del    edit
+            //console.info(obj)
+            var data = obj.data;
+            if('play'==obj.event){//点击编辑
+
+// var location =data.videoFullPathName;
+//
+//                 var loadstr = '<video width="100%" height="100%" ' +
+//                     ' controls="controls" ' +
+//                     'autobuffer="autobuffer" ' +
+//                     ' autoplay="autoplay" loop="loop">' +
+//                     '<source src="http://106.54.46.37/images/44.MP4" type="video/mp4"></source>' +
+//                     '</video>' ;
+//                 alert(location);
+//                 alert(loadstr);
+//                 layer.open({
+//                     type: 1,
+//                     title: '播放视频',
+//                     content: loadstr,
+//                 });
+
+                window.open("http://106.54.46.37/images/44.MP4");
+
+
             }
 
         })
@@ -347,32 +427,60 @@ $(function () {
         })
 
 
+
         form.on('select(selectOne)', function(data){
             if(data.value == "001"){
                 $("#menuName").show();
                 $("#level").hide();
+                $("#menuUrl").hide();
                 form.render('select');
             }else{
-
+                $("#firstMenu").empty();
                 //获取所有一级菜单
+                $("#firstMenu").append("<option value=''>"+"请选择二级菜单添加到哪个下面"+"</option>");
                 $.each(menu,function(index,data){
                     $("#firstMenu").append("<option value="+data.id+">"+data.text+"</option>");
                 });
 
                 $("#level").show();
                 $("#menuName").show();
+                $("#menuUrl").show();
                 form.render('select');//select是固定写法 不是选择器
             }
+
         })
 
 
         $("#getmenu").click(function () {
             //后台查询菜单
-            $.post('menuManagement/allMenu',null,function (data) {
-                console.info(data);
-                console.info(data.data);
-            })
+            // $.post('menuManagement/allMenu',null,function (data) {
+            // })
         })
+        $("#playVido").click(function () {
+
+            var loadstr = '<video width="100%" height="100%" ' +
+                ' controls="controls" ' +
+                'autobuffer="autobuffer" ' +
+                ' autoplay="autoplay" loop="loop">' +
+                '<source src="/static/videos/sample1.mp4" type="video/mp4"></source>' +
+                '</video>'
+            layer.open({
+                type: 1,
+                title: '播放视频',
+                content: loadstr,
+            });
+        })
+
+
+        form.on('submit(formDemo)', function (data) {
+            console.log(data.field);
+            $.post('menuManagement/addMenu',data.field,function (data) {
+                layer.open({
+                    title: '操作提示',
+                    content: data.message
+                });
+            })
+        });
 
 
 

@@ -3,7 +3,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>Title</title>
-    <link rel="stylesheet" href="/static/layui-2.4.5/css/layui.css">
+    <link rel="stylesheet" href="/static/layui-2.5.6/css/layui.css">
     <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
     <link rel="stylesheet" href="/static/css/commonStyle.css">
     <script src="/static/jqery/jquery.min.js"></script>
@@ -22,12 +22,12 @@
 <!--<button class="layui-btn layui-btn-normal" id="layuilook"><i class="fa fa-clipboard"></i> &nbsp;查看行元素</button>-->
 <!--<button class="layui-btn layui-btn-normal" id="download"><i class="fa fa-clipboard"></i> &nbsp;下载FTP文件</button>-->
 <!--</div>-->
-<form class="layui-form" action="" style="border: 2px; background: #1b6d85">
+<form class="layui-form"  id="menuForm" action="" style="border: 2px; background: #1b6d85">
 
         <div class="layui-form-item">
             <!--layui-input-inline    短  -->
             <div class="layui-input-inline" >
-                <select name="addMenu"   lay-filter="selectOne" lay-verify="required" >
+                <select name="addMenu1"   lay-filter="selectOne" lay-verify="required" >
                     <option value="">请选择你要添加菜单级别</option>
                     <option value="001">一级菜单</option>
                     <option value="002">二级菜单</option>
@@ -38,30 +38,51 @@
         <div class="layui-form-item" id="level" style="display: none">
             <!--layui-input-inline    短  -->
             <div class="layui-input-inline" >
-                <select name="addMenu"   lay-filter="selectOne" lay-verify="required" id="firstMenu">
+                <select name="addMenu2"   lay-filter="selectTwo"  id="firstMenu">
                     <option value="">请选择二级菜单添加到哪个下面</option>
                 </select>
             </div>
         </div>
 
+    <div class="layui-form-item" id="menuUrl"  style="display: none">
+        <!--layui-input-inline    短  -->
+        <div class="layui-input-inline" >
+            <div class="layui-input-inline">
+                <input type="text" name="menuUrl"
+                       required
+                       placeholder="请输入跳转的地址"
+                       autocomplete="off" class="layui-input">
+            </div>
+        </div>
+    </div>
+
+
+
         <div class="layui-form-item" id="menuName"  style="display: none">
             <!--layui-input-inline    短  -->
             <div class="layui-input-inline" >
                 <div class="layui-input-inline">
-                    <input type="password" name="password"
+                    <input type="text" name="menuName"
                            required lay-verify="required"
                            placeholder="请输入菜单名称"
                            autocomplete="off" class="layui-input">
+
+
                 </div>
             </div>
         </div>
 
-    <button id="saveMenu" class="layui-btn layui-btn-normal"><i class="fa fa-remove"></i> &nbsp;保存</button>
+    <!--<button id="saveMenu" class="layui-btn layui-btn-normal"><i class="fa fa-remove"></i> &nbsp;保存</button>-->
+
+
+    <div class="layui-form-item layui-inline">
+        <button class="layui-btn" lay-submit lay-filter="formDemo">保存</button>
+    </div>
 
 </form>
 
 
-<script src="/static/layui-2.4.5/layui.js"></script>
+<script src="/static/layui-2.5.6/layui.js"></script>
 <script src="/static/js/layuiDemo/indexLayui.js"></script>
 <script src="/static/js/layuiDemo/layuiMenuManagement.js"></script>
 <script src="/static/js/common/cldCommon.js"></script>

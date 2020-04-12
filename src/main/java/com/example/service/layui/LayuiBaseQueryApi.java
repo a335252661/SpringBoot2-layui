@@ -20,4 +20,13 @@ public interface LayuiBaseQueryApi {
      * @return
      */
     MessageResult selectAllMenu();
+
+    /**
+     * 添加菜单
+     * @param addMenu1
+     * @param addMenu2
+     * @param menuName
+     * @return
+     */
+    MessageResult addMenu(String addMenu1, String addMenu2, String menuName,String menuUrl);
 }

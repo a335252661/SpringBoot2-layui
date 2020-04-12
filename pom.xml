@@ -28,11 +28,11 @@
     <dependencies>
 
         <!--打war包-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-tomcat</artifactId>
-            <scope>provided</scope>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-starter-tomcat</artifactId>-->
+            <!--<scope>provided</scope>-->
+        <!--</dependency>-->
         <!---->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -390,7 +390,13 @@
         <!--<artifactId>guava</artifactId>-->
         <!--<version>12.0</version>-->
         <!--</dependency>-->
-
+        <!--Data-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.4</version>
+            <scope>provided</scope>
+        </dependency>
 
     </dependencies>
 
