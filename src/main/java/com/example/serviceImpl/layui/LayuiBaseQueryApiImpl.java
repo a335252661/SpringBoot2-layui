@@ -292,10 +292,16 @@ public class LayuiBaseQueryApiImpl implements LayuiBaseQueryApi {
 
 
             int id = menuMapper.queryNextMenuIdByFatherId(addMenu2);
+
+            if(id==0){
+                 id = Integer.parseInt(addMenu2+"1");
+            }
+
             layUIMenu.setMenuId(id);
             layUIMenu.setLevel("2");
             layUIMenu.setText(menuName);
             layUIMenu.setFatherMenuId(Integer.parseInt(addMenu2));
+            layUIMenu.setURL(menuUrl);
             layUIMenuMapper.insert(layUIMenu);
         }
         return new MessageResult();

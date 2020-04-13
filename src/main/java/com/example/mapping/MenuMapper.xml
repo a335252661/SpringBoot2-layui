@@ -8,7 +8,7 @@
 </select>
 
     <select id="queryNextMenuIdByFatherId" parameterType="String" resultType="int">
-        select MAX(menuid)+1 from layuimenu where fatherMenuId =#{fatherid}
+        select IFNULL(MAX(menuid)+1,0) from layuimenu where fatherMenuId =#{fatherid}
     </select>
 
 </mapper>
