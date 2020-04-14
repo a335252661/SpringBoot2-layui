@@ -40,11 +40,11 @@ body {
     padding: 25px;
     float: left;
     height: 72px;
-    border-bottom: 1px solid #293649;
-    position: relative;
+    border-bottom: 1px solid #293649;     /* 底部边框 */
+    position: relative;   /*  相对定位 */
     width: 100%;
     color: #eff4fa;
-    transition: text-indent 0.15s, height 0.3s;
+    transition: text-indent 0.15s, height 0.3s;     /*  缓慢体现过渡效果 */
     box-sizing: border-box;
 }
 .swanky_wrapper label img {
@@ -102,7 +102,7 @@ body {
     width: 100%;
     opacity: 0;
     left: -100%;
-    background: #15a4fa;
+    background: #0f1b30;  /* 子菜单颜色 */
     height: 64px;
     line-height: 64px;
     text-indent: 25px;
@@ -111,22 +111,22 @@ body {
     position: relative;
 }
 .swanky_wrapper__content li:hover {
-    background: #0c93e4;
+    background: rgba(60, 63, 65, 0.75);     /* 子菜单 鼠标滑动颜色 */
     box-shadow: 3px 0px #126ca1 inset;
     transition: box-shadow 0.3s linear, text-indent 0.3s linear;
     text-indent: 31px;
 }
 .swanky_wrapper__content .clear {
-    clear: both;
+    clear: both;     /*  左右都不可以出现浮动 */
 }
 
-input[type='radio']:checked + label .swanky_wrapper__content {
+input[type='radio']:checked + label .swanky_wrapper__content {  /* +相邻兄弟选择器        后代选择器 ，  */
     display: block;
     top: 68px;
     border-bottom: 1px solid #212e41;
 }
 
-input[type='radio']:checked + label > .lil_arrow {
+input[type='radio']:checked + label > .lil_arrow {  /*  子元素选择器 */
     transition: -webkit-transform 0.8s;
     transition: transform 0.8s;
     transition: transform 0.8s, -webkit-transform 0.8s;
