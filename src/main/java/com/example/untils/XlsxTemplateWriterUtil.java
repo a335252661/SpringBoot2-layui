@@ -1603,6 +1603,42 @@ public class XlsxTemplateWriterUtil {
 
     }
 
+
+    public static void main(String[] args) {
+        File file = new File("D:\\tmp\\test.xlsx");
+//        XlsxTemplateWriterUtil writer = null;
+        //只有一个sheet页
+        try {
+//            writer = new XlsxTemplateWriterUtil(file, Arrays.asList("0"), 1);
+
+
+            XSSFWorkbook wb = new XSSFWorkbook();
+
+            //获取XSSFWorkbook 对象
+//            XSSFWorkbook wb = writer.wb;
+//            XSSFCellStyle style = setAndReturnStyle(wb);
+
+            //获取sheet
+            XSSFSheet sheet = wb.createSheet("当前excel的名");
+
+            XSSFRow row = sheet.createRow(1);
+            XSSFCell cell = row.createCell(1);
+
+            cell.setCellValue("xsxsxs");
+
+            wb.setForceFormulaRecalculation(true);
+
+            FileOutputStream out = new FileOutputStream(
+                    new File("D:\\tmp\\test.xlsx"));
+            wb.write(out);
+            out.close();
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     /**
      * @author by cld
      * @date 2019/5/13 13:38
@@ -2052,48 +2088,4 @@ public class XlsxTemplateWriterUtil {
         return toStr(i+1);
     }
 
-
-    public static void main(String[] args) {
-
-
-//        nextStr("C");
-        System.out.println(nextStr("C"));
-
-
-//        try {
-//             File file = new File("D:\\_TES-work\\BMS\\2_3Code\\tes\\tes-manager\\src\\main\\webapp\\WEB-INF\\template\\Early_Initial_IPO.xlsx");
-////            File file = new File("C:\\Users\\syanl\\Desktop\\Midterm_Direct.xlsx");
-//
-//            XlsxTemplateWriterUtil write = new XlsxTemplateWriterUtil(file, Arrays.asList("测试"), 1);
-//            write.wb.getCTWorkbook().getSheets().getSheetArray(0).setName("哈哈");
-//            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd");
-//            Date date = simpleDateFormat.parse("20180205");
-//            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy年MM月dd日");
-//
-//
-//            Map<String, Map<Integer, List<Map<String, Object>>>> locations = new HashMap<>();
-//            Map<Integer, List<Map<String, Object>>> locMap = new HashMap<>();
-//            List<Map<String, Object>> list = new ArrayList<>();
-//            Map<String, Object> map = new HashMap<>();
-//            map.put("1", "2");
-//            list.add(map);
-//            locMap.put(1, list);
-//            locations.put("xx", locMap);
-//            Map<String, Map<Integer, List<Map<String, Object>>>> hashMap = new HashMap<>();
-//            for(String key : locations.keySet()){
-//                Map<Integer, List<Map<String, Object>>> llMap = new HashMap<>();
-//                llMap.putAll(locations.get(key));
-//                hashMap.put(key, llMap);
-//            }
-//            // hashMap.putAll(locations);
-//            hashMap.put("ll", locMap);
-//            // hashMap.remove("xx");
-//            hashMap.get("xx").remove(1);
-//            System.out.println(dateFormat.format(date));
-//            System.out.println(hashMap);
-//
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-    }
 }

@@ -130,14 +130,22 @@ public class MailSendHelp {
         }
     }
     public static void main(String[] args) {
-        List<String> fileStrlist = Arrays.asList("F:\\Screenshots\\comparator比较器.jpg",
-               "F:\\Screenshots\\foreach输出.png" );
-//        MailSendHelp.sendMail("吸引力", "chengliudegg@163.com", "spring boot 邮件测试");
-        MailSendHelp.doSendHtmlEmail("邮件测试" ,
-                "spring boot 邮件测试",
-                "chengliudegg@163.com",
-               "chengliudegg@163.com,335252661@qq.com",
-                fileStrlist);
+//        List<String> fileStrlist = Arrays.asList("F:\\Screenshots\\comparator比较器.jpg",
+//               "F:\\Screenshots\\foreach输出.png" );
+//        MailSendHelp.doSendHtmlEmail("邮件测试" ,
+//                "spring boot 邮件测试",
+//                "chengliudegg@163.com",
+//               "chengliudegg@163.com,335252661@qq.com",
+//                fileStrlist);
+
+//        MailSendHelp.doSendHtmlEmail("cld_all_data 表更新完成" ,
+//                "您好：  cld_temp_data跟cld_all_data 表更新完成，您可以从这两张表取数",
+//                "chengliudegg@163.com",
+//                "chengliudegg@163.com,335252661@qq.com",
+//                null);
+
+        System.out.println("你好");
+
     }
 
 }
