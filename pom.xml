@@ -199,11 +199,11 @@
         <!--xlsl文件导入-->
 
 
-        <dependency>
-            <groupId>org.dom4j</groupId>
-            <artifactId>dom4j</artifactId>
-            <version>1.6.1</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.dom4j</groupId>-->
+            <!--<artifactId>dom4j</artifactId>-->
+            <!--<version>1.6.1</version>-->
+        <!--</dependency>-->
 
 
         <!-- iReport JasperReports -->
@@ -238,11 +238,11 @@
             <artifactId>commons-net</artifactId>
             <version>3.0.1</version>
         </dependency>
-        <dependency>
-            <groupId>jsch</groupId>
-            <artifactId>jsch</artifactId>
-            <version>0.1.29</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>jsch</groupId>-->
+            <!--<artifactId>jsch</artifactId>-->
+            <!--<version>0.1.29</version>-->
+        <!--</dependency>-->
 
 
         <!--quartz-->
