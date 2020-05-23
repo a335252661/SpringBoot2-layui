@@ -10,7 +10,7 @@ import java.io.FileOutputStream;
 import java.util.*;
 
 /**
- * @author 程刘德
+ * @author ??????
  * @version 1.0
  * @Description TODO
  * @date 2020/4/15
@@ -25,9 +25,9 @@ public class WriterExcelHelp {
     public static void generateExcelFile(String fileLocation, String fileName, List<HashMap<String , String>> data,String sheetName) {
         String fullPath = fileLocation+"\\"+fileName;
         FileHelp.isExistAndCreate(fullPath);
-        //只有一个sheet页
+        //??????sheet?
         try {
-            //获取sheet
+            //???sheet
             if(null==sheetName){
                 sheetName = "sheet1";
             }
@@ -35,7 +35,7 @@ public class WriterExcelHelp {
 
             int line = 1;
             for(HashMap<String , String> map:data){
-                if(line==1){    //第一行处理
+                if(line==1){    //????д???
                     Set<String> strings = map.keySet();
                     ArrayList<String> ls=new ArrayList(strings);
                     WriterExcelHelp.writeRow(ls);
@@ -86,7 +86,7 @@ public class WriterExcelHelp {
         //List<HashMap<String , String>> data
         List<HashMap<String , String>> list = new ArrayList<>();
         for(int i=0;i<100;i++){
-            HashMap map = new HashMap();
+            LinkedHashMap map = new LinkedHashMap();
             map.put("data1" , "1");
             map.put("data2" , "2");
             map.put("data3" , "3");
@@ -96,7 +96,7 @@ public class WriterExcelHelp {
             list.add(map);
         }
 
-        WriterExcelHelp.generateExcelFile("D:\\tmp" , "111.xlsx",list,null);
+        WriterExcelHelp.generateExcelFile("D:\\tmp" , "111.xlsx",list,"到处数据测试");
     }
 
 }

@@ -36,6 +36,11 @@ public class CldCommonUntils {
 
     protected static final Logger logger = LoggerFactory.getLogger(CldCommonUntils.class);
 
+
+    public static void main(String[] args) {
+        CldCommonUntils.makeQrCode("You are my sweet-heart.");
+    }
+
     /**
      * 在c盘文件夹中生成二维码
      * @param content
